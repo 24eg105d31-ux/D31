@@ -1,0 +1,371 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@crms.edu",
+      "password": "$2b$10$VI4ehUBtu.Gub61NfwyCZOkqDImkFpEDnmohdKM/N.6nF42Aglnvm",
+      "role": "admin",
+      "createdAt": "2026-02-19T09:25:05.555Z"
+    },
+    {
+      "id": "1772095392980",
+      "name": "Laxman",
+      "email": "24eg105d31@anurag.edu.in",
+      "password": "$2b$10$Mcz4/F1Wef7GEzVOiAvxjOrV0itXFYGrtAl6bhxF4U.PchbzzseZq",
+      "role": "user",
+      "createdAt": "2026-02-26T08:43:12.980Z"
+    },
+    {
+      "id": "1772700102044",
+      "name": "Test User",
+      "email": "testuser1772700101975@example.com",
+      "password": "$2b$10$W0CrvnJ3hZNWXqtscsigMOMJIGefyVrBInop6G5oujU6tqWRepBdC",
+      "role": "user",
+      "createdAt": "2026-03-05T08:41:42.044Z"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "1772097485270",
+      "resourceId": "Classroom B1",
+      "resourceName": "Classroom B1",
+      "resourceType": "Classroom",
+      "date": "2026-02-28",
+      "timeSlot": "1:00 PM - 2:00 PM",
+      "userId": 1771491537873,
+      "userName": "sneha",
+      "userEmail": "24eg105d60@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-02-26T09:18:05.270Z",
+      "updatedAt": "2026-03-05T08:37:55.081Z"
+    },
+    {
+      "id": "1772097985907",
+      "resourceId": "a2",
+      "resourceName": "Mini Auditorium",
+      "resourceType": "auditorium",
+      "date": "2026-02-26",
+      "timeSlot": "4:00 PM - 5:00 PM",
+      "userId": 1771491537873,
+      "userName": "sneha",
+      "userEmail": "24eg105d60@anurag.edu.in",
+      "status": "rejected",
+      "createdAt": "2026-02-26T09:26:25.907Z",
+      "updatedAt": "2026-03-05T08:41:42.057Z"
+    },
+    {
+      "id": "1772098000337",
+      "resourceId": "h1",
+      "resourceName": "Seminar Hall 1",
+      "resourceType": "hall",
+      "date": "2026-02-27",
+      "timeSlot": "3:00 PM - 4:00 PM",
+      "userId": 1771491537873,
+      "userName": "sneha",
+      "userEmail": "24eg105d60@anurag.edu.in",
+      "status": "rejected",
+      "createdAt": "2026-02-26T09:26:40.337Z",
+      "updatedAt": "2026-03-05T09:08:32.235Z"
+    },
+    {
+      "id": "1772098020809",
+      "resourceId": "h1",
+      "resourceName": "Seminar Hall 1",
+      "resourceType": "hall",
+      "date": "2027-02-18",
+      "timeSlot": "3:00 PM - 4:00 PM",
+      "userId": 1771491537873,
+      "userName": "sneha",
+      "userEmail": "24eg105d60@anurag.edu.in",
+      "status": "rejected",
+      "createdAt": "2026-02-26T09:27:00.809Z",
+      "updatedAt": "2026-03-05T09:08:34.694Z"
+    },
+    {
+      "id": "1772700102053",
+      "resourceId": "l1",
+      "resourceName": "Lab 101",
+      "resourceType": "lab",
+      "date": "2026-03-15",
+      "timeSlot": "10:00 AM - 11:00 AM",
+      "userId": "test123",
+      "userName": "Test User",
+      "userEmail": "test@example.com",
+      "status": "rejected",
+      "createdAt": "2026-03-05T08:41:42.053Z",
+      "updatedAt": "2026-03-05T09:08:36.192Z"
+    },
+    {
+      "id": "1772700800904",
+      "resourceId": "c4",
+      "resourceName": "Classroom B2",
+      "resourceType": "classroom",
+      "date": "2026-03-20",
+      "timeSlot": "12:00 PM - 1:00 PM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-05T08:53:20.904Z",
+      "updatedAt": "2026-03-05T09:08:37.256Z"
+    },
+    {
+      "id": "1772702230445",
+      "resourceId": "c3",
+      "resourceName": "Classroom B1",
+      "resourceType": "classroom",
+      "date": "2026-03-18",
+      "timeSlot": "2:00 PM - 3:00 PM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-05T09:17:10.446Z",
+      "updatedAt": "2026-03-05T09:17:56.050Z"
+    },
+    {
+      "id": "1772705563988",
+      "resourceId": "l1",
+      "resourceName": "Lab 101",
+      "resourceType": "lab",
+      "date": "2026-03-12",
+      "timeSlot": "3:00 PM - 4:00 PM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-05T10:12:43.988Z",
+      "updatedAt": "2026-03-05T10:13:28.488Z"
+    }
+  ],
+  "resources": [
+    {
+      "id": "l1",
+      "name": "Lab 101",
+      "type": "lab",
+      "capacity": 30,
+      "status": "available",
+      "building": "CSE Block"
+    },
+    {
+      "id": "l2",
+      "name": "Lab 102",
+      "type": "lab",
+      "capacity": 30,
+      "status": "occupied",
+      "building": "CSE Block"
+    },
+    {
+      "id": "l3",
+      "name": "Lab 103",
+      "type": "lab",
+      "capacity": 30,
+      "status": "available",
+      "building": "CSE Block"
+    },
+    {
+      "id": "l4",
+      "name": "Lab 104",
+      "type": "lab",
+      "capacity": 30,
+      "status": "occupied",
+      "building": "CSE Block"
+    },
+    {
+      "id": "l5",
+      "name": "Lab 105",
+      "type": "lab",
+      "capacity": 25,
+      "status": "available",
+      "building": "CSE Block"
+    },
+    {
+      "id": "l6",
+      "name": "Lab 106",
+      "type": "lab",
+      "capacity": 25,
+      "status": "available",
+      "building": "CSE Block"
+    },
+    {
+      "id": "l7",
+      "name": "Lab 107",
+      "type": "lab",
+      "capacity": 30,
+      "status": "occupied",
+      "building": "CSE Block"
+    },
+    {
+      "id": "l8",
+      "name": "Lab 108",
+      "type": "lab",
+      "capacity": 30,
+      "status": "available",
+      "building": "CSE Block"
+    },
+    {
+      "id": "c1",
+      "name": "Classroom A1",
+      "type": "classroom",
+      "capacity": 60,
+      "status": "available",
+      "building": "Block A"
+    },
+    {
+      "id": "c2",
+      "name": "Classroom A2",
+      "type": "classroom",
+      "capacity": 60,
+      "status": "occupied",
+      "building": "Block A"
+    },
+    {
+      "id": "c3",
+      "name": "Classroom B1",
+      "type": "classroom",
+      "capacity": 50,
+      "status": "available",
+      "building": "Block B"
+    },
+    {
+      "id": "c4",
+      "name": "Classroom B2",
+      "type": "classroom",
+      "capacity": 50,
+      "status": "available",
+      "building": "Block B"
+    },
+    {
+      "id": "c5",
+      "name": "Classroom C1",
+      "type": "classroom",
+      "capacity": 40,
+      "status": "occupied",
+      "building": "Block C"
+    },
+    {
+      "id": "c6",
+      "name": "Classroom C2",
+      "type": "classroom",
+      "capacity": 40,
+      "status": "available",
+      "building": "Block C"
+    },
+    {
+      "id": "c7",
+      "name": "Classroom C3",
+      "type": "classroom",
+      "capacity": 45,
+      "status": "available",
+      "building": "Block C"
+    },
+    {
+      "id": "c8",
+      "name": "Classroom C4",
+      "type": "classroom",
+      "capacity": 45,
+      "status": "occupied",
+      "building": "Block C"
+    },
+    {
+      "id": "c9",
+      "name": "Classroom D1",
+      "type": "classroom",
+      "capacity": 35,
+      "status": "available",
+      "building": "Block D"
+    },
+    {
+      "id": "c10",
+      "name": "Classroom D2",
+      "type": "classroom",
+      "capacity": 35,
+      "status": "available",
+      "building": "Block D"
+    },
+    {
+      "id": "c11",
+      "name": "Classroom D3",
+      "type": "classroom",
+      "capacity": 35,
+      "status": "occupied",
+      "building": "Block D"
+    },
+    {
+      "id": "c12",
+      "name": "Classroom D4",
+      "type": "classroom",
+      "capacity": 35,
+      "status": "available",
+      "building": "Block D"
+    },
+    {
+      "id": "h1",
+      "name": "Seminar Hall 1",
+      "type": "hall",
+      "capacity": 100,
+      "status": "available",
+      "building": "Admin Block"
+    },
+    {
+      "id": "h2",
+      "name": "Seminar Hall 2",
+      "type": "hall",
+      "capacity": 80,
+      "status": "booked",
+      "building": "Admin Block"
+    },
+    {
+      "id": "h3",
+      "name": "Seminar Hall 3",
+      "type": "hall",
+      "capacity": 50,
+      "status": "available",
+      "building": "Admin Block"
+    },
+    {
+      "id": "a1",
+      "name": "Main Auditorium",
+      "type": "auditorium",
+      "capacity": 500,
+      "status": "booked",
+      "building": "Cultural Block"
+    },
+    {
+      "id": "a2",
+      "name": "Mini Auditorium",
+      "type": "auditorium",
+      "capacity": 150,
+      "status": "available",
+      "building": "Cultural Block"
+    }
+  ],
+  "maintenance": [
+    {
+      "id": "1772097583520",
+      "resourceId": "l3",
+      "resourceName": "Lab 103",
+      "issue": "Furniture",
+      "description": "not so good",
+      "userId": 1771491537873,
+      "userName": "sneha",
+      "userEmail": "24eg105d60@anurag.edu.in",
+      "status": "in-progress",
+      "createdAt": "2026-02-26T09:19:43.520Z",
+      "updatedAt": "2026-03-05T08:41:42.062Z"
+    },
+    {
+      "id": "1772700102059",
+      "resourceId": "c1",
+      "resourceName": "Classroom A1",
+      "issue": "Electrical",
+      "description": "Light not working",
+      "userId": "test123",
+      "userName": "Test User",
+      "userEmail": "test@example.com",
+      "status": "pending",
+      "createdAt": "2026-03-05T08:41:42.059Z"
+    }
+  ]
+}

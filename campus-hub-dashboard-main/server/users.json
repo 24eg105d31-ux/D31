@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1771491537873,
+      "name": "sneha",
+      "email": "24eg105d60@anurag.edu.in",
+      "password": "$2b$10$BszHeBUBny8xr.XydxNJ/.wMSD45iZrBc2mheUSiBhivLXjP5g/OK",
+      "createdAt": "2026-02-19T08:58:57.873Z"
+    },
+    {
+      "id": 1771491634538,
+      "name": "Laxman",
+      "email": "24eg105d31@anurag.edu.in",
+      "password": "$2b$10$tlucO2cEp1rsF43ahOr5aujksFeOVv.zinGvDFcSiZ6/vZrftAyJ.",
+      "createdAt": "2026-02-19T09:00:34.538Z"
+    },
+    {
+      "id": 1771491991489,
+      "name": "varsha",
+      "email": "hyger@gmail.com",
+      "password": "$2b$10$VrTs4HDaKF7pMUTen3oNWOnwGDTMEiEidCy/uwAaK55mqKLSvEjKi",
+      "createdAt": "2026-02-19T09:06:31.489Z"
+    }
+  ]
+}
