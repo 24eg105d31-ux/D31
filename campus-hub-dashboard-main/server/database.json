@@ -23,6 +23,22 @@
       "password": "$2b$10$W0CrvnJ3hZNWXqtscsigMOMJIGefyVrBInop6G5oujU6tqWRepBdC",
       "role": "user",
       "createdAt": "2026-03-05T08:41:42.044Z"
+    },
+    {
+      "id": "1773249286492",
+      "name": "Sneha",
+      "email": "24eg105d60@anurag.edu.in",
+      "password": "$2b$10$lgtKb22qFbfpu8PZ9xBT7ejpdPIjQyl6vas5CkIcZjZnTty39p8ES",
+      "role": "user",
+      "createdAt": "2026-03-11T17:14:46.492Z"
+    },
+    {
+      "id": "1773253774514",
+      "name": "faculty",
+      "email": "faculty@crms.edu",
+      "password": "$2b$10$iRQBxtyY11t3fvNQNWrnQuytvsQVv/KfN0ZPF.ertAjYiimDI/Hxi",
+      "role": "user",
+      "createdAt": "2026-03-11T18:29:34.514Z"
     }
   ],
   "bookings": [
@@ -137,6 +153,188 @@
       "status": "approved",
       "createdAt": "2026-03-05T10:12:43.988Z",
       "updatedAt": "2026-03-05T10:13:28.488Z"
+    },
+    {
+      "id": "1773249024302",
+      "resourceId": "l1",
+      "resourceName": "Lab 101",
+      "resourceType": "lab",
+      "date": "2026-03-12",
+      "timeSlot": "8:00 AM - 9:00 AM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-11T17:10:24.302Z",
+      "updatedAt": "2026-03-11T17:10:45.606Z"
+    },
+    {
+      "id": "1773249311823",
+      "resourceId": "l1",
+      "resourceName": "Lab 101",
+      "resourceType": "lab",
+      "date": "2026-03-12",
+      "timeSlot": "8:00 AM - 9:00 AM",
+      "userId": "1773249286492",
+      "userName": "Sneha",
+      "userEmail": "24eg105d60@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-11T17:15:11.823Z",
+      "updatedAt": "2026-03-11T17:15:47.448Z"
+    },
+    {
+      "id": "1773251159641",
+      "resourceId": "l3",
+      "resourceName": "Lab 103",
+      "resourceType": "lab",
+      "date": "2026-03-12",
+      "timeSlot": "8:00 AM - 9:00 AM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-11T17:45:59.641Z",
+      "updatedAt": "2026-03-11T17:46:22.412Z"
+    },
+    {
+      "id": "1773251212518",
+      "resourceId": "l3",
+      "resourceName": "Lab 103",
+      "resourceType": "lab",
+      "date": "2026-03-12",
+      "timeSlot": "8:00 AM - 9:00 AM",
+      "userId": "1773249286492",
+      "userName": "Sneha",
+      "userEmail": "24eg105d60@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-11T17:46:52.518Z",
+      "updatedAt": "2026-03-11T17:47:24.002Z"
+    },
+    {
+      "id": "1773251589467",
+      "resourceId": "c1",
+      "resourceName": "Classroom A1",
+      "resourceType": "classroom",
+      "date": "2026-03-12",
+      "timeSlot": "8:00 AM - 9:00 AM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-11T17:53:09.467Z",
+      "updatedAt": "2026-03-11T17:53:29.819Z"
+    },
+    {
+      "id": "1773251666852",
+      "resourceId": "c1",
+      "resourceName": "Classroom A1",
+      "resourceType": "classroom",
+      "date": "2026-03-12",
+      "timeSlot": "8:00 AM - 9:00 AM",
+      "userId": "1773249286492",
+      "userName": "Sneha",
+      "userEmail": "24eg105d60@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-11T17:54:26.852Z",
+      "updatedAt": "2026-03-11T17:55:04.736Z"
+    },
+    {
+      "id": "1773256118794uqkjlji",
+      "resourceId": "c4",
+      "resourceName": "Classroom B2",
+      "resourceType": "classroom",
+      "date": "2026-03-21",
+      "timeSlot": "1:00 PM - 2:00 PM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "rejected",
+      "createdAt": "2026-03-11T19:08:38.794Z",
+      "updatedAt": "2026-03-11T19:09:45.407Z"
+    },
+    {
+      "id": "1773303935527l5hbacs",
+      "resourceId": "a2",
+      "resourceName": "Mini Auditorium",
+      "resourceType": "auditorium",
+      "date": "2026-03-19",
+      "timeSlot": "11:00 AM - 12:00 PM",
+      "userId": "1773253774514",
+      "userName": "faculty",
+      "userEmail": "faculty@crms.edu",
+      "status": "approved",
+      "createdAt": "2026-03-12T08:25:35.527Z",
+      "updatedAt": "2026-03-12T08:26:21.626Z"
+    },
+    {
+      "id": "1773304104120r0jkjp8",
+      "resourceId": "l3",
+      "resourceName": "Lab 103",
+      "resourceType": "lab",
+      "date": "2026-03-12",
+      "timeSlot": "10:00 AM - 11:00 AM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-12T08:28:24.120Z",
+      "updatedAt": "2026-03-12T08:28:52.429Z"
+    },
+    {
+      "id": "17733048350807hc3dg3",
+      "resourceId": "a2",
+      "resourceName": "Mini Auditorium",
+      "resourceType": "auditorium",
+      "date": "2026-03-12",
+      "timeSlot": "11:00 AM - 12:00 PM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-12T08:40:35.080Z",
+      "updatedAt": "2026-03-12T08:40:55.295Z"
+    },
+    {
+      "id": "1773305677015v2qlq3v",
+      "resourceId": "c4",
+      "resourceName": "Classroom B2",
+      "resourceType": "classroom",
+      "date": "2026-03-12",
+      "timeSlot": "11:00 AM - 12:00 PM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "rejected",
+      "createdAt": "2026-03-12T08:54:37.015Z",
+      "updatedAt": "2026-03-12T09:33:45.323Z"
+    },
+    {
+      "id": "17733059263953juj9me",
+      "resourceId": "c6",
+      "resourceName": "Classroom C2",
+      "resourceType": "classroom",
+      "date": "2026-03-12",
+      "timeSlot": "11:00 AM - 12:00 PM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "rejected",
+      "createdAt": "2026-03-12T08:58:46.395Z",
+      "updatedAt": "2026-03-12T09:33:46.700Z"
+    },
+    {
+      "id": "17733073897013c4srl6",
+      "resourceId": "h3",
+      "resourceName": "Seminar Hall 3",
+      "resourceType": "hall",
+      "date": "2026-03-13",
+      "timeSlot": "1:00 PM - 2:00 PM",
+      "userId": "1772095392980",
+      "userName": "Laxman",
+      "userEmail": "24eg105d31@anurag.edu.in",
+      "status": "approved",
+      "createdAt": "2026-03-12T09:23:09.701Z",
+      "updatedAt": "2026-03-12T09:32:11.288Z"
     }
   ],
   "resources": [
@@ -351,9 +549,9 @@
       "userId": 1771491537873,
       "userName": "sneha",
       "userEmail": "24eg105d60@anurag.edu.in",
-      "status": "in-progress",
+      "status": "completed",
       "createdAt": "2026-02-26T09:19:43.520Z",
-      "updatedAt": "2026-03-05T08:41:42.062Z"
+      "updatedAt": "2026-03-12T08:26:34.893Z"
     },
     {
       "id": "1772700102059",
@@ -364,8 +562,10 @@
       "userId": "test123",
       "userName": "Test User",
       "userEmail": "test@example.com",
-      "status": "pending",
-      "createdAt": "2026-03-05T08:41:42.059Z"
+      "status": "completed",
+      "createdAt": "2026-03-05T08:41:42.059Z",
+      "updatedAt": "2026-03-12T08:26:32.161Z"
     }
-  ]
+  ],
+  "reservations": []
 }

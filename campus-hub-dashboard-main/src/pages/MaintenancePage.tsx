@@ -45,13 +45,15 @@ const MaintenancePage = () => {
 
   const fetchData = async () => {
     try {
-      const [requestsRes, resourcesRes] = await Promise.all([
-        fetch("http://localhost:3001/api/maintenance"),
-        fetch("http://localhost:3001/api/resources"),
-      ]);
+    const [requestsRes, resourcesRes] = await Promise.all([
+      fetch("http://localhost:3001/api/maintenance"),
+      fetch("http://localhost:3001/api/resources"),
+    ]);
 
-      const requestsData = await requestsRes.json();
-      const resourcesData = await resourcesRes.json();
+    if (!requestsRes.ok || !resourcesRes.ok) throw new Error("Failed to fetch data");
+
+    const requestsData = await requestsRes.json();
+    const resourcesData = await resourcesRes.json();
 
       // Filter requests for current user
       const userRequests = user
@@ -88,6 +90,7 @@ const MaintenancePage = () => {
       });
 
       if (response.ok) {
+        const data = await response.json();
         setSubmitSuccess(true);
         setTimeout(() => {
           setDialogOpen(false);
@@ -97,6 +100,9 @@ const MaintenancePage = () => {
           setDescription("");
           fetchData();
         }, 2000);
+      } else {
+        const errorData = await response.json();
+        alert(errorData.error || "Failed to submit request");
       }
     } catch (error) {
       console.error("Error submitting request:", error);

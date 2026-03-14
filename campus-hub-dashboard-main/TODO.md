@@ -1,31 +1,37 @@
-# TODO - Role-Based UI Differentiation
+# Resource Booking Conflict Enforcement - Progress Tracker
 
-## Plan Overview
-Modify the UI so that Admin and Regular User interfaces look visually different.
+## Approved Plan Summary
+- Backend: Already prevents double-bookings with transactions/locks
+- Fix: Sync resource status, enhance LiveAvailability, disable unavailable slots
+- Clean DB duplicates, add real-time slot matrix
 
-## Tasks
+## Steps (0/6 Complete)
 
-### 1. Add Admin CSS Theme Variables
-- [x] Add darker CSS theme variables in index.css for Admin
-- Status: COMPLETED
+### 1. Clean duplicate bookings from database.json ✅
+- Copy campus-hub-dashboard-main/server/database-cleaned.json → database.json
+- Restart backend: Ctrl+C backend terminal, `node campus-hub-dashboard-main/server/server.js`
 
-### 2. Modify SubNav for Admin
-- [x] Add "Admin Dashboard" tab visible only for admin users
-- Status: COMPLETED
+### 2. Update server/database.js - Sync resource status from bookings ✅
+- Added updateResourceStatusesFromBookings() called in initResources/createBooking
+- Sets 'booked' if any approved/pending booking next 7 days
 
-### 3. Modify Index.tsx (Main Dashboard)
-- [x] Apply different CSS classes based on user role
-- [x] Add admin-specific dashboard content (Pending/Approved/Rejected cards)
-- [x] Hide admin components for regular users
-- Status: COMPLETED
+**Next Step: 3/6 LiveAvailability.tsx**
 
-### 4. Modify Admin.tsx
-- [x] Apply darker theme styling
-- [x] Add request cards (Pending, Approved, Rejected)
-- Status: COMPLETED
+### 3. Update LiveAvailability.tsx - Time-specific availability
+- Add date picker + slot matrix/grid
+- Fetch /api/bookings/check for each slot, color-code available/booked
+- Auto-poll every 10s
 
-### 5. Modify Resource Pages
-- [x] LabsPage - Change booking button styling
-- [x] ClassroomsPage - Change booking button styling  
-- [x] HallsPage - Change booking button styling
-- Status: COMPLETED
+### 4. Update resource pages (LabsPage/ClassroomsPage/HallsPage.tsx)
+- Fetch all time slots availability on dialog open
+- Disable unavailable slots in Select
+
+### 5. Test conflicts
+- Login 2 users, book same slot -> should block 2nd
+- Check LiveAvailability shows real-time
+
+### 6. Restart servers & demo
+- Frontend dev server
+- Backend node server.js
+
+**Next Step: 1/6 Clean DB**

@@ -92,6 +92,12 @@ const Admin = () => {
       const bookingsData = await bookingsRes.json();
       const resourcesData = await resourcesRes.json();
       const maintenanceData = await maintenanceRes.json();
+
+      // Add role header for backend
+      const headers = {
+        'Content-Type': 'application/json',
+        'x-user-role': user.role
+      };
       
       setBookings(bookingsData);
       setResources(resourcesData);
@@ -587,6 +593,66 @@ const Admin = () => {
         {activeTab === "bookings" && renderBookings()}
         {activeTab === "resources" && renderResources()}
         {activeTab === "maintenance" && renderMaintenance()}
+        {activeTab === "maintenance" && (
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card className="admin-card">
+              <CardHeader>
+                <CardTitle className="text-white flex items-center gap-2">
+                  <AlertCircle className="w-5 h-5" />
+                  Open Requests (Pending + In Progress)
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {maintenanceRequests.filter(r => r.status !== "completed").slice(0, 6).map(request => (
+                  <div key={request.id} className="flex items-center justify-between p-4 border-b border-gray-700/50 last:border-b-0">
+                    <div>
+                      <p className="font-medium text-white">{request.resourceName}</p>
+                      <p className="text-sm text-gray-400">{request.issue}</p>
+                    </div>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => handleResolveMaintenance(request.id)}
+                        disabled={resolving === request.id}
+                        className={`px-3 py-1 rounded text-xs font-medium flex items-center gap-1 ${resolving === request.id ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      >
+                        In Progress
+                      </button>
+                      <button
+                        onClick={() => handleResolveMaintenance(request.id)}
+                        disabled={resolving === request.id}
+                        className={`px-3 py-1 rounded text-xs font-medium flex items-center gap-1 ${resolving === request.id ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      >
+                        Resolve
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+            <Card className="admin-card">
+              <CardHeader>
+                <CardTitle className="text-white flex items-center gap-2">
+                  <CheckCircle className="w-5 h-5" />
+                  Recently Resolved
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                {maintenanceRequests.filter(r => r.status === "completed").slice(-4).map(request => (
+                  <div key={request.id} className="flex items-start gap-3 p-3 bg-gray-800/30 rounded-lg mb-3">
+                    <div className="flex-shrink-0 w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                      <Check className="w-5 h-5 text-green-400" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-white">{request.resourceName} - {request.issue}</p>
+                      <p className="text-sm text-gray-400">{request.description}</p>
+                      <p className="text-xs text-gray-500 mt-1">{formatDate(request.createdAt)}</p>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </main>
     </div>
   );

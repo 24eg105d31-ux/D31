@@ -64,6 +64,23 @@ const HallsPage = () => {
   const handleBooking = async () => {
     if (!selectedHall || !selectedDate || !selectedTimeSlot || !user) return;
 
+    // First check if slot is available
+    try {
+      const dateStr = selectedDate.toISOString().split("T")[0];
+      const checkResponse = await fetch(
+        `http://localhost:3001/api/bookings/check?resourceId=${selectedHall.id}&date=${dateStr}&timeSlot=${encodeURIComponent(selectedTimeSlot)}`
+      );
+      const checkData = await checkResponse.json();
+      
+      if (!checkData.available) {
+        alert(`This time slot is already booked by ${checkData.existingBooking?.userName || 'another user'}. Please choose a different time or date.`);
+        return;
+      }
+    } catch (error) {
+      console.error("Error checking availability:", error);
+      // Continue with booking attempt - server will validate
+    }
+
     try {
       const response = await fetch("http://localhost:3001/api/bookings", {
         method: "POST",
@@ -80,6 +97,8 @@ const HallsPage = () => {
         }),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
         setBookingSuccess(true);
         setTimeout(() => {
@@ -89,9 +108,12 @@ const HallsPage = () => {
           setSelectedDate(undefined);
           setSelectedTimeSlot("");
         }, 2000);
+      } else {
+        alert(data.error || "Failed to create booking. Please try again.");
       }
     } catch (error) {
       console.error("Error creating booking:", error);
+      alert("Failed to create booking. Please try again.");
     }
   };
 

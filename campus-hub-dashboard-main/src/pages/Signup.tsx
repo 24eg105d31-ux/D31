@@ -8,12 +8,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const signupSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
   confirmPassword: z.string(),
+  role: z.enum(["student", "faculty"], {
+    errorMap: () => ({ message: "Please select a role" }),
+  }),
 }).refine((data) => data.password === data.confirmPassword, {
   message: "Passwords don't match",
   path: ["confirmPassword"],
@@ -25,6 +29,7 @@ const Signup = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedRole, setSelectedRole] = useState<string>("student");
   const { signup } = useAuth();
   const navigate = useNavigate();
   
@@ -34,6 +39,9 @@ const Signup = () => {
     formState: { errors, isSubmitting },
   } = useForm<SignupForm>({
     resolver: zodResolver(signupSchema),
+    defaultValues: {
+      role: "student",
+    },
   });
 
   const onSubmit = async (data: SignupForm) => {
@@ -41,7 +49,7 @@ const Signup = () => {
     setSuccess(false);
     setIsLoading(true);
     
-    const result = await signup(data.name, data.email.toLowerCase(), data.password);
+    const result = await signup(data.name, data.email.toLowerCase(), data.password, data.role);
     setIsLoading(false);
     
     if (result.success) {
@@ -95,6 +103,22 @@ const Signup = () => {
               />
               {errors.email && (
                 <p className="text-sm text-destructive">{errors.email.message}</p>
+              )}
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="role">Role</Label>
+              <select 
+                id="role" 
+                className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                value={selectedRole}
+                {...register("role")}
+                onChange={(e) => setSelectedRole(e.target.value)}
+              >
+                <option value="student">Student</option>
+                <option value="faculty">Faculty</option>
+              </select>
+              {errors.role && (
+                <p className="text-sm text-destructive">{errors.role.message}</p>
               )}
             </div>
             <div className="space-y-2">

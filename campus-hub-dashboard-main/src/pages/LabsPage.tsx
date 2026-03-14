@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useAuth } from "@/contexts/AuthContext";
 import { Calendar } from "@/components/ui/calendar";
+import { getStatusBadgeClass, StatusBadge } from "@/utils/statusUtils";
 
 interface Lab {
   id: string;
@@ -61,6 +62,23 @@ const LabsPage = () => {
   const handleBooking = async () => {
     if (!selectedLab || !selectedDate || !selectedTimeSlot || !user) return;
 
+    // First check if slot is available
+    try {
+      const dateStr = selectedDate.toISOString().split("T")[0];
+      const checkResponse = await fetch(
+        `http://localhost:3001/api/bookings/check?resourceId=${selectedLab.id}&date=${dateStr}&timeSlot=${encodeURIComponent(selectedTimeSlot)}`
+      );
+      const checkData = await checkResponse.json();
+      
+      if (!checkData.available) {
+        alert(`This time slot is already booked by ${checkData.existingBooking?.userName || 'another user'}. Please choose a different time or date.`);
+        return;
+      }
+    } catch (error) {
+      console.error("Error checking availability:", error);
+      // Continue with booking attempt - server will validate
+    }
+
     try {
       const response = await fetch("http://localhost:3001/api/bookings", {
         method: "POST",
@@ -77,6 +95,8 @@ const LabsPage = () => {
         }),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
         setBookingSuccess(true);
         setTimeout(() => {
@@ -86,9 +106,13 @@ const LabsPage = () => {
           setSelectedDate(undefined);
           setSelectedTimeSlot("");
         }, 2000);
+      } else {
+        // Handle slot already booked error
+        alert(data.error || "Failed to create booking. Please try again.");
       }
     } catch (error) {
       console.error("Error creating booking:", error);
+      alert("Failed to create booking. Please try again.");
     }
   };
 
@@ -133,9 +157,7 @@ const LabsPage = () => {
             <CardHeader className="pb-2">
               <div className="flex justify-between items-start">
                 <CardTitle className="text-lg">{lab.name}</CardTitle>
-                <Badge className={getStatusColor(lab.status)}>
-                  {lab.status}
-                </Badge>
+                <StatusBadge status={lab.status} />
               </div>
             </CardHeader>
             <CardContent>

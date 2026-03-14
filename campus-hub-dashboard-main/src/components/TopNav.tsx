@@ -1,13 +1,21 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Bell, User, CheckCircle2, AlertTriangle, XCircle, LogOut, Shield } from "lucide-react";
+import { Bell, User, CheckCircle2, AlertTriangle, XCircle, LogOut, Shield, GraduationCap, BookOpen } from "lucide-react";
 import { notificationItems } from "@/data/mockData";
 import { useAuth } from "@/contexts/AuthContext";
+import { hasPermission, getRoleDisplayName, UserRoles } from "@/utils/roleUtils";
 
 const iconMap = {
   success: { icon: CheckCircle2, cls: "text-success" },
   warning: { icon: AlertTriangle, cls: "text-warning" },
   error: { icon: XCircle, cls: "text-destructive" },
+};
+
+// Role badge colors
+const roleBadgeStyles = {
+  [UserRoles.ADMIN]: "bg-orange-500 text-white",
+  [UserRoles.FACULTY]: "bg-purple-500 text-white",
+  [UserRoles.STUDENT]: "bg-blue-500 text-white"
 };
 
 const TopNav = () => {
@@ -17,7 +25,9 @@ const TopNav = () => {
   const userMenuRef = useRef<HTMLDivElement>(null);
   const { user, isAuthenticated, logout } = useAuth();
 
-  const isAdmin = user?.role === "admin";
+  const userRole = user?.role || UserRoles.STUDENT;
+  const isAdmin = userRole === UserRoles.ADMIN;
+  const isFaculty = userRole === UserRoles.FACULTY;
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -38,6 +48,11 @@ const TopNav = () => {
     window.location.href = "/login";
   };
 
+  // Get role display name
+  const getRoleLabel = () => {
+    return getRoleDisplayName(userRole);
+  };
+
   return (
     <header className="bg-nav text-nav-foreground px-6 py-4 flex items-center justify-between">
       <h1 className="text-xl font-bold">
@@ -49,7 +64,8 @@ const TopNav = () => {
       <div className="flex items-center gap-4">
         {isAuthenticated ? (
           <>
-            {isAdmin && (
+            {/* Admin Panel Link - Only for Admin */}
+            {hasPermission(userRole, 'canViewAdminPanel') && (
               <Link
                 to="/admin"
                 className="flex items-center gap-2 text-sm font-medium hover:opacity-80 transition-opacity"
@@ -58,6 +74,19 @@ const TopNav = () => {
                 Admin Dashboard
               </Link>
             )}
+
+            {/* Faculty Dashboard Link - Only for Faculty */}
+            {hasPermission(userRole, 'canViewDepartmentUtilization') && !isAdmin && (
+              <Link
+                to="/department"
+                className="flex items-center gap-2 text-sm font-medium hover:opacity-80 transition-opacity"
+              >
+                <GraduationCap className="w-4 h-4" />
+                Department Stats
+              </Link>
+            )}
+
+            {/* Notifications - Visible to all */}
             <div className="relative" ref={notifRef}>
               <button
                 onClick={() => setShowNotifs((p) => !p)}
@@ -81,6 +110,8 @@ const TopNav = () => {
                 </div>
               )}
             </div>
+
+            {/* User Menu */}
             <div className="relative" ref={userMenuRef}>
               <button
                 onClick={() => setShowUserMenu(!showUserMenu)}
@@ -89,14 +120,8 @@ const TopNav = () => {
                 <User className="w-6 h-6" />
                 <span className="text-sm font-medium">{user?.name}</span>
                 {/* Role Badge */}
-                <span 
-                  className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
-                    isAdmin 
-                      ? "bg-orange-500 text-white" 
-                      : "bg-blue-500 text-white"
-                  }`}
-                >
-                  {isAdmin ? "Admin" : "Student"}
+                <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${roleBadgeStyles[userRole as keyof typeof roleBadgeStyles]}`}>
+                  {getRoleLabel()}
                 </span>
               </button>
               {showUserMenu && (
@@ -105,14 +130,8 @@ const TopNav = () => {
                     <div className="font-semibold text-sm">{user?.name}</div>
                     <div className="text-xs text-muted-foreground">{user?.email}</div>
                     {/* Role Badge in Dropdown */}
-                    <span 
-                      className={`inline-block mt-2 px-2 py-0.5 rounded-full text-xs font-semibold ${
-                        isAdmin 
-                          ? "bg-orange-500 text-white" 
-                          : "bg-blue-500 text-white"
-                      }`}
-                    >
-                      {isAdmin ? "Admin" : "Student"}
+                    <span className={`inline-block mt-2 px-2 py-0.5 rounded-full text-xs font-semibold ${roleBadgeStyles[userRole as keyof typeof roleBadgeStyles]}`}>
+                      {getRoleLabel()}
                     </span>
                   </div>
                   <button
